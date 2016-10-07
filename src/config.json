@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "name": "sdc",
+    "title": "Sequence Diagram Composer",
+    "description": "Web app for drawing sequence diagrams",
+    "keywords": "sequence diagrams, drawing tool, chart, web app",
+    "url": "https://techpush.github.io/sdc/",
+    "author": "@ndaidong",
+    "image": "https://techpush.github.io/sdc/images/brand/techpush.png"
+  },
+  "imgBrand": "/images/brand"
+}
