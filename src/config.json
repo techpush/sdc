@@ -4,9 +4,9 @@
     "title": "Sequence Diagram Composer",
     "description": "Web app for drawing sequence diagrams",
     "keywords": "sequence diagrams, drawing tool, chart, web app",
-    "url": "http://127.0.0.1:8184",
+    "url": "https://techpush.github.io/sdc/",
     "author": "@ndaidong",
-    "image": "http://127.0.0.1:8184/images/brand/techpush.png"
+    "image": "https://techpush.github.io/sdc/images/brand/techpush.png"
   },
   "imgBrand": "/images/brand"
 }
