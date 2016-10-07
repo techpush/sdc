@@ -16,7 +16,7 @@
   .inner {
     width: 100%;
     height: 100%;
-    min-height: 400px;
+    min-height: 200px;
     display: flex;
   }
 }
@@ -24,13 +24,48 @@
 .txt-input {
   width: 100%;
   height: 100%;
+  min-width: 300px;
+  resize: none;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: 10px;
-  resize: vertical;
 }
 
 .txt-output {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 10px;
+  color: #000;
   background-color: #fafafa;
+  .link-download {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    right: 1px;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: #eee;
+    color: #007;
+    &:hover {
+      background-color: #fea;
+    }
+  }
+}
+
+.expanding-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pre {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    display: block;
+    visibility: hidden;
+  }
 }

@@ -66,9 +66,12 @@
       "fbgrid": "https://raw.githubusercontent.com/kristoferjoseph/flexboxgrid/master/dist/flexboxgrid.css"
     },
     "javascript": {
+      "bella": "https://cdn.rawgit.com/ndaidong/bellajs/master/dist/bella.min.js",
       "doc": "https://rawgit.com/ndaidong/doc/master/dist/doc.min.js",
+      "filesaver": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
       "raphael": "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.6/raphael.js",
       "sedia": "https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js",
+      "svgpan": "http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.js",
       "underscore": "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js",
       "vue": "http://vuejs.org/js/vue.min.js"
     }
