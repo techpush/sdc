@@ -1,0 +1,77 @@
+{
+  "version": "0.0.1",
+  "name": "jsd",
+  "description": "Web app for drawing sequence diagrams",
+  "homepage": "http://techpush.xyz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techpush/jsd"
+  },
+  "author": "@ndaidong",
+  "keywords": [
+    "js-sequence-diagrams",
+    "diagram",
+    "sequence",
+    "uml"
+  ],
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 6.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "setup": "node ./workers/bin/setup",
+    "start": "npm run setup && node server -p 8183",
+    "release": "node ./workers/bin/release && http-server dist -p 8184 -o",
+    "reset": "node ./workers/bin/reset"
+  },
+  "devDependencies": {
+    "babel-core": "latest",
+    "babel-plugin-transform-remove-strict-mode": "latest",
+    "babel-plugin-transform-strict-mode": "latest",
+    "babel-preset-es2015": "latest",
+    "bellajs": "latest",
+    "cheerio": "latest",
+    "copy-dir": "latest",
+    "css-mqpacker": "latest",
+    "cssnano": "latest",
+    "eslint": "latest",
+    "eslint-config-ggc": "latest",
+    "express": "latest",
+    "handlebars": "latest",
+    "html-minifier": "latest",
+    "http-server": "latest",
+    "imagemin": "latest",
+    "imagemin-mozjpeg": "latest",
+    "imagemin-pngquant": "latest",
+    "minimist": "latest",
+    "mkdirp": "latest",
+    "postcss": "latest",
+    "postcss-cssnext": "latest",
+    "postcss-filter-plugins": "latest",
+    "postcss-scss": "latest",
+    "precss": "latest",
+    "promise-wtf": "latest",
+    "pug": "latest",
+    "recursive-readdir": "latest",
+    "rucksack-css": "latest",
+    "shift-codegen": "latest",
+    "shift-parser": "latest",
+    "svgo": "latest"
+  },
+  "builder": {
+    "sourceDir": "src",
+    "distDir": "dist",
+    "css": {
+      "fbgrid": "https://raw.githubusercontent.com/kristoferjoseph/flexboxgrid/master/dist/flexboxgrid.css"
+    },
+    "javascript": {
+      "doc": "https://rawgit.com/ndaidong/doc/master/dist/doc.min.js",
+      "raphael": "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.6/raphael.js",
+      "sedia": "https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js",
+      "underscore": "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js",
+      "vue": "http://vuejs.org/js/vue.min.js"
+    }
+  },
+  "license": "MIT"
+}
