@@ -14,6 +14,33 @@
 
   var lastData = '';
 
+  var debounce = (func, wait) => {
+
+    let timeout, args, context, timestamp;
+
+    return function _(..._args) {
+
+      context = this; // eslint-disable-line
+      args = _args;
+      timestamp = Date.now();
+
+      let later = function _later() {
+
+        let last = Date.now() - timestamp;
+        if (last < wait) {
+          timeout = setTimeout(later, wait - last);
+        } else {
+          timeout = null;
+          func.apply(context, args);
+        }
+      };
+
+      if (!timeout) {
+        timeout = setTimeout(later, wait);
+      }
+    };
+  };
+
   var addColon = (s) => {
     if (s.includes(':')) {
       return s;
@@ -102,25 +129,19 @@
     }
   };
 
-  doc.Event.on(elInput, 'keyup', (evt) => {
-    let ev = evt || window.event;
-    let kc = ev.keyCode;
-    if (kc !== 8 && kc !== 13) {
-      return false;
-    }
+  var debouncedRenderOutput = debounce(renderOutput, 1000);
+
+  doc.Event.on(elInput, 'keyup', () => {
     let v = check(elInput.value);
-    if (!v.length) {
+    if (!v.length || v === lastData) {
       return false;
     }
-    if (v === lastData) {
-      return false;
-    }
-    return renderOutput(v);
+    return debouncedRenderOutput(v);
   });
 
 
   var initSample = () => {
-    let statements = [
+    let v = [
       'Title: The process of service',
       'Bob -> Alice : request service',
       'Alice -> John : ask for help',
@@ -129,10 +150,10 @@
       'Nina --> Alice : return result',
       'Tom --> Alice : share key',
       'Alice -->> Bob : reply'
-    ];
+    ].join('\n');
 
-    let v = statements.join('\n');
     elInput.value = v;
+
     renderOutput(v);
   };
 
