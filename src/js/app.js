@@ -147,7 +147,14 @@
       'Alice -> John : ask for help',
       'Alice -> Nina : verify',
       'John -> Tom : ask key',
-      'Nina --> Alice : return result',
+      'Nina -> Alice : return result',
+      'Note right of Tom : Tom does not remember',
+      'Tom --> Tom : ask himself',
+      'Tom --> Nina : ask for a hint',
+      'Note left of Nina : Nina forgot too',
+      'Nina --> Tom : reject',
+      'Tom --> Kelly : ask for a hint',
+      'Kelly -->> Tom : hint',
       'Tom --> Alice : share key',
       'Alice -->> Bob : reply'
     ].join('\n');
