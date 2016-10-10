@@ -1,0 +1,22 @@
+header.mdl-layout__header.customized {
+  min-height: 50px;
+  .mdl-layout__header-row {
+    height: 50px;
+    padding: 0px 20px;
+    a {
+      position: relative;
+      top: 2px;
+      i {
+        color: #fff;
+        font-size: 30px;
+        display: inline-block;
+        &:hover {
+          color: #abf;
+        }
+      }
+    }
+  }
+  .mdl-navigation {
+    height: 50px;
+  }
+}

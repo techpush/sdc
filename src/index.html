@@ -44,37 +44,47 @@
     <link rel="shortcut icon" href="{{imgBrand}}/favicon.ico">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Architects+Daughter">
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/vendor/material.css">
+    <link rel="stylesheet" type="text/css" href="css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="css/stylex.css">
   </head>
   <body>
-    <header>
-      <h1>{{meta.title}}</h1>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header customized">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">{{meta.title}}</span>
+          <div class="mdl-layout-spacer"></div>
+          <a href="https://github.com/techpush/sdc" target="_blank" title="Go to GitHub repo">
+            <i class="icon-github-circled"></i>
+          </a>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="page-content">
 
-      <a href="https://github.com/techpush/sdc" target="_blank" title="Form me on GitHub">
-        <i class="icon-github-circled"></i>
-      </a>
-    </header>
-
-    <main>
-      <div class="container">
-        <div class="box left">
-          <div class="inner">
-            <div class="expanding-area">
-              <pre><span id="elShadowInput"></span><br></pre>
-              <textarea class="txt-input" id="elInput"></textarea>
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4">
+                  <div class="box">
+                    <div class="expanding-area">
+                      <pre><span id="elShadowInput"></span><br></pre>
+                      <textarea class="txt-input" id="elInput"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-8">
+                  <div class="box">
+                    <div class="txt-output">
+                      <div id="elOutput"></div>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
+
         </div>
-        <div class="box right">
-          <div class="inner">
-            <div class="txt-output">
-              <div id="elOutput"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
 
     <script type="text/javascript" src="js/vendor/raphael.js"></script>
     <script type="text/javascript" src="js/vendor/underscore.js"></script>
