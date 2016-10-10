@@ -4,7 +4,7 @@
  * @ndaidong
  */
 
-/* global Bella doc Diagram svgPanZoom saveAs */
+/* global Bella doc Diagram svgPanZoom saveAs Headroom */
 
 (() => {
 
@@ -164,5 +164,10 @@
     renderOutput(v);
   };
 
-  doc.ready(initSample);
+  doc.ready(() => {
+    initSample();
+    let header = doc.one('.headroom');
+    let headroom = new Headroom(header);
+    headroom.init();
+  });
 })();

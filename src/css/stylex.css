@@ -1,22 +1,107 @@
-header.mdl-layout__header.customized {
-  min-height: 50px;
-  .mdl-layout__header-row {
-    height: 50px;
-    padding: 0px 20px;
-    a {
-      position: relative;
-      top: 2px;
-      i {
-        color: #fff;
-        font-size: 30px;
-        display: inline-block;
-        &:hover {
-          color: #abf;
-        }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  color: #FFF;
+  background: #3F51B5;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  will-change: transform;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
+  h1 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+    max-width: 50%;
+  }
+  a {
+    max-width: 50%;
+    i {
+      color: #fff;
+      font-size: 30px;
+      display: inline-block;
+      &:hover {
+        color: #abf;
       }
     }
   }
-  .mdl-navigation {
-    height: 50px;
+}
+
+.headroom {
+  transition: transform 200ms linear;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+main {
+  flex: 1;
+
+  .txt-input {
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    resize: none;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
   }
+
+  .txt-output {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: #000;
+    background-color: #fafafa;
+    .link-download {
+      position: absolute;
+      z-index: 1;
+      top: 1px;
+      right: 1px;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-decoration: underline;
+      background-color: #eee;
+      color: #007;
+      &:hover {
+        background-color: #fea;
+      }
+    }
+    overflow-x: hidden;
+  }
+
+  .expanding-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    pre {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      border: 0;
+      display: block;
+      visibility: hidden;
+    }
+  }
+}
+
+footer {
+  padding: 15px 20px;
+  background: #42A5F5;
+  color: white;
 }

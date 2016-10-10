@@ -63,14 +63,13 @@
     "sourceDir": "src",
     "distDir": "dist",
     "css": {
-      "flexgrid": "https://raw.githubusercontent.com/kristoferjoseph/flexboxgrid/master/dist/flexboxgrid.min.css",
-      "material": "https://code.getmdl.io/1.2.1/material.indigo-pink.min.css"
+      "spectre": "https://raw.githubusercontent.com/picturepan2/spectre/master/dist/spectre.min.css"
     },
     "javascript": {
       "bella": "https://cdn.rawgit.com/ndaidong/bellajs/master/dist/bella.min.js",
       "doc": "https://rawgit.com/ndaidong/doc/master/dist/doc.min.js",
       "filesaver": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
-      "material": "https://code.getmdl.io/1.2.1/material.min.js",
+      "headroom": "https://npmcdn.com/headroom.js",
       "raphael": "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.6/raphael.js",
       "sedia": "https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js",
       "svgpan": "http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.js",
