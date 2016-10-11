@@ -4,7 +4,7 @@
  * @ndaidong
  */
 
-/* global Bella doc Diagram svgPanZoom saveAs draggable */
+/* global Bella doc Diagram svgPanZoom saveAs interact */
 
 (() => {
 
@@ -138,6 +138,27 @@
     return debouncedRenderOutput(v);
   });
 
+  var dragMoveListener = (event) => {
+    let target = event.target;
+    let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    target.style.transform = `translate(${x}px, ${y}px)`;
+    target.style.transformOrigin = `0 0`;
+
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  };
+
+  var activateBox = (el) => {
+    interact(el)
+      .draggable({
+        autoScroll: true
+      }).resizable({
+        preserveAspectRatio: false
+      }).on('dragmove dragend', dragMoveListener);
+  };
+
 
   var initSample = () => {
     let v = [
@@ -161,8 +182,7 @@
     elInput.value = v;
 
     renderOutput(v);
-    let handler = elBox.querySelector('.drag-handler');
-    draggable(elBox, handler);
+    activateBox(elBox);
   };
 
   initSample();
