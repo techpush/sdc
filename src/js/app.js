@@ -4,7 +4,7 @@
  * @ndaidong
  */
 
-/* global Bella doc Diagram svgPanZoom saveAs interact */
+/* global Bella doc Diagram svgPanZoom saveAs draggable */
 
 (() => {
 
@@ -89,7 +89,7 @@
 
     let fname = Bella.createAlias(title);
 
-    Event.on(btnDownload, 'click', () => {
+    btnDownload.onclick = () => {
       svg.focus();
       saveAs(
         new Blob(
@@ -98,7 +98,7 @@
         ),
         `${fname}.svg`
       );
-    });
+    };
   };
 
   var updateDragger = () => {
@@ -107,8 +107,8 @@
       zoomEnabled: true,
       controlIconsEnabled: false,
       dblClickZoomEnabled: false,
-      contain: true,
-      fit: true,
+      contain: false,
+      fit: false,
       center: true
     });
 
@@ -138,27 +138,6 @@
     return debouncedRenderOutput(v);
   });
 
-  var dragMoveListener = (event) => {
-    let target = event.target;
-    let x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-    let y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    target.style.transform = `translate(${x}px, ${y}px)`;
-    target.style.transformOrigin = `0 0`;
-
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-  };
-
-  var activateBox = (el) => {
-    interact(el)
-      .draggable({
-        autoScroll: true
-      }).resizable({
-        preserveAspectRatio: false
-      }).on('dragmove dragend', dragMoveListener);
-  };
-
 
   var initSample = () => {
     let v = [
@@ -182,7 +161,8 @@
     elInput.value = v;
 
     renderOutput(v);
-    activateBox(elBox);
+    let handler = elBox.querySelector('.drag-handler');
+    draggable(elBox, handler);
   };
 
   initSample();
