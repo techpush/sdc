@@ -89,7 +89,7 @@
 
     let fname = Bella.createAlias(title);
 
-    Event.on(btnDownload, 'click', () => {
+    btnDownload.onclick = () => {
       svg.focus();
       saveAs(
         new Blob(
@@ -98,7 +98,7 @@
         ),
         `${fname}.svg`
       );
-    });
+    };
   };
 
   var updateDragger = () => {
@@ -107,8 +107,8 @@
       zoomEnabled: true,
       controlIconsEnabled: false,
       dblClickZoomEnabled: false,
-      contain: true,
-      fit: true,
+      contain: false,
+      fit: false,
       center: true
     });
 
