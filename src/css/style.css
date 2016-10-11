@@ -56,6 +56,7 @@ main.mdl-layout__content {
   z-index: 5;
   width: 500px;
   height: 360px;
+  transform-origin: 0% 0%;
   .drag-handler {
     height: 30px;
     background-color: #ccc;

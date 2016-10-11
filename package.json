@@ -71,6 +71,7 @@
       "doc": "https://rawgit.com/ndaidong/doc/master/dist/doc.min.js",
       "draggable": "https://raw.githubusercontent.com/gtramontina/draggable.js/master/draggable.js",
       "filesaver": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
+      "interact": "http://code.interactjs.io/v1.2.6/interact.js",
       "material": "https://code.getmdl.io/1.2.1/material.min.js",
       "raphael": "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.6/raphael.js",
       "sedia": "https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js",
