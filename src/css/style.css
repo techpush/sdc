@@ -1,71 +1,89 @@
-.container {
-  padding: 20px 5px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-}
-.box {
-  padding: 10px 20px;
-  flex: 2;
-  &.left {
-    flex: 1;
-  }
-  .inner {
-    width: 100%;
-    height: 100%;
-    min-height: 200px;
-    display: flex;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.txt-input {
-  width: 100%;
-  height: 100%;
-  min-width: 300px;
-  resize: none;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px;
-}
+header {
+  .mdl-layout-title {
+    font-weight: 400;
+    font-size: 20px;
+  }
 
-.txt-output {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  color: #000;
-  background-color: #fafafa;
-  .link-download {
-    position: absolute;
-    z-index: 1;
-    top: 1px;
-    right: 1px;
-    padding: 5px 10px;
-    cursor: pointer;
-    text-decoration: underline;
-    background-color: #eee;
-    color: #007;
-    &:hover {
-      background-color: #fea;
+  a {
+    i {
+      color: #fff;
+      font-size: 30px;
+      display: inline-block;
+      &:hover {
+        color: #abf;
+      }
     }
   }
 }
 
-.expanding-area {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  pre {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    border: 0;
-    display: block;
-    visibility: hidden;
+.mdl-layout__header-row {
+  padding: 0 16px 0 20px;
+}
+
+main.mdl-layout__content {
+  min-height: 400px;
+  min-width: 600px;
+  overflow: hidden;
+  svg {
+    width: 100%;
   }
+}
+
+#btnDownload {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: underline;
+  background-color: #eee;
+  color: #007;
+  &:hover {
+    background-color: #fea;
+  }
+}
+#elBox {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  z-index: 5;
+  width: 500px;
+  height: 360px;
+  .drag-handler {
+    height: 30px;
+    background-color: #ccc;
+    line-height: 30px;
+    color: #000;
+    font-weight: 700;
+    text-indent: 10px;
+  }
+
+  .txt-input {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    border: inset 2px #ddd;
+    background-color: #000;
+    color: #fafafa;
+    opacity: 0.7;
+  }
+}
+
+footer {
+  padding: 15px 20px;
+  background: #42A5F5;
+  color: white;
+}
+
+.hidden {
+  display: none;
 }

@@ -63,17 +63,19 @@
     "sourceDir": "src",
     "distDir": "dist",
     "css": {
-      "fbgrid": "https://raw.githubusercontent.com/kristoferjoseph/flexboxgrid/master/dist/flexboxgrid.css"
+      "material": "https://code.getmdl.io/1.2.1/material.indigo-pink.min.css"
     },
     "javascript": {
+      "autosize": "https://raw.githubusercontent.com/jackmoore/autosize/master/dist/autosize.js",
       "bella": "https://cdn.rawgit.com/ndaidong/bellajs/master/dist/bella.min.js",
       "doc": "https://rawgit.com/ndaidong/doc/master/dist/doc.min.js",
+      "draggable": "https://raw.githubusercontent.com/gtramontina/draggable.js/master/draggable.js",
       "filesaver": "https://raw.githubusercontent.com/eligrey/FileSaver.js/master/FileSaver.js",
+      "material": "https://code.getmdl.io/1.2.1/material.min.js",
       "raphael": "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.6/raphael.js",
       "sedia": "https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js",
       "svgpan": "http://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.js",
-      "underscore": "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js",
-      "vue": "http://vuejs.org/js/vue.min.js"
+      "underscore": "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"
     }
   },
   "license": "MIT"

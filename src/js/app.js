@@ -4,15 +4,45 @@
  * @ndaidong
  */
 
-/* global Bella doc Diagram svgPanZoom saveAs */
+/* global Bella doc Diagram svgPanZoom saveAs draggable */
 
 (() => {
 
   var elInput = doc.get('elInput');
   var elOutput = doc.get('elOutput');
-  var elShadowInput = doc.get('elShadowInput');
+  var elBox = doc.get('elBox');
+  var btnDownload = doc.get('btnDownload');
 
   var lastData = '';
+
+  var Event = doc.Event;
+
+  var debounce = (func, wait) => {
+
+    let timeout, args, context, timestamp;
+
+    return function _(..._args) {
+
+      context = this; // eslint-disable-line
+      args = _args;
+      timestamp = Date.now();
+
+      let later = function _later() {
+
+        let last = Date.now() - timestamp;
+        if (last < wait) {
+          timeout = setTimeout(later, wait - last);
+        } else {
+          timeout = null;
+          func.apply(context, args);
+        }
+      };
+
+      if (!timeout) {
+        timeout = setTimeout(later, wait);
+      }
+    };
+  };
 
   var addColon = (s) => {
     if (s.includes(':')) {
@@ -59,10 +89,7 @@
 
     let fname = Bella.createAlias(title);
 
-    let lnk = doc.add('SPAN', elOutput);
-    lnk.addClass('link-download');
-    lnk.html('Download');
-    lnk.onclick = () => {
+    Event.on(btnDownload, 'click', () => {
       svg.focus();
       saveAs(
         new Blob(
@@ -71,7 +98,7 @@
         ),
         `${fname}.svg`
       );
-    };
+    });
   };
 
   var updateDragger = () => {
@@ -93,7 +120,6 @@
       let diagram = Diagram.parse(v);
       elOutput.empty();
       diagram.drawSVG(elOutput);
-      elShadowInput.html(v);
       updateDragger();
       lastData = v;
       return diagram;
@@ -102,39 +128,42 @@
     }
   };
 
-  doc.Event.on(elInput, 'keyup', (evt) => {
-    let ev = evt || window.event;
-    let kc = ev.keyCode;
-    if (kc !== 8 && kc !== 13) {
-      return false;
-    }
+  var debouncedRenderOutput = debounce(renderOutput, 1000);
+
+  Event.on(elInput, 'keyup', () => {
     let v = check(elInput.value);
-    if (!v.length) {
+    if (!v.length || v === lastData) {
       return false;
     }
-    if (v === lastData) {
-      return false;
-    }
-    return renderOutput(v);
+    return debouncedRenderOutput(v);
   });
 
 
   var initSample = () => {
-    let statements = [
+    let v = [
       'Title: The process of service',
       'Bob -> Alice : request service',
       'Alice -> John : ask for help',
       'Alice -> Nina : verify',
       'John -> Tom : ask key',
-      'Nina --> Alice : return result',
+      'Nina -> Alice : return result',
+      'Note right of Tom : Tom does not remember',
+      'Tom --> Tom : ask himself',
+      'Tom --> Nina : ask for a hint',
+      'Note left of Nina : Nina forgot too',
+      'Nina --> Tom : reject',
+      'Tom --> Kelly : ask for a hint',
+      'Kelly -->> Tom : hint',
       'Tom --> Alice : share key',
       'Alice -->> Bob : reply'
-    ];
+    ].join('\n');
 
-    let v = statements.join('\n');
     elInput.value = v;
+
     renderOutput(v);
+    let handler = elBox.querySelector('.drag-handler');
+    draggable(elBox, handler);
   };
 
-  doc.ready(initSample);
+  initSample();
 })();
