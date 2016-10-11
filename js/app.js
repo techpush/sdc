@@ -4,15 +4,18 @@
  * @ndaidong
  */
 
-/* global Bella doc Diagram svgPanZoom saveAs */
+/* global Bella doc Diagram svgPanZoom saveAs draggable */
 
 (() => {
 
   var elInput = doc.get('elInput');
   var elOutput = doc.get('elOutput');
-  var elShadowInput = doc.get('elShadowInput');
+  var elBox = doc.get('elBox');
+  var btnDownload = doc.get('btnDownload');
 
   var lastData = '';
+
+  var Event = doc.Event;
 
   var debounce = (func, wait) => {
 
@@ -86,10 +89,7 @@
 
     let fname = Bella.createAlias(title);
 
-    let lnk = doc.add('SPAN', elOutput);
-    lnk.addClass('link-download');
-    lnk.html('Download');
-    lnk.onclick = () => {
+    Event.on(btnDownload, 'click', () => {
       svg.focus();
       saveAs(
         new Blob(
@@ -98,7 +98,7 @@
         ),
         `${fname}.svg`
       );
-    };
+    });
   };
 
   var updateDragger = () => {
@@ -120,7 +120,6 @@
       let diagram = Diagram.parse(v);
       elOutput.empty();
       diagram.drawSVG(elOutput);
-      elShadowInput.html(v);
       updateDragger();
       lastData = v;
       return diagram;
@@ -131,7 +130,7 @@
 
   var debouncedRenderOutput = debounce(renderOutput, 1000);
 
-  doc.Event.on(elInput, 'keyup', () => {
+  Event.on(elInput, 'keyup', () => {
     let v = check(elInput.value);
     if (!v.length || v === lastData) {
       return false;
@@ -162,7 +161,9 @@
     elInput.value = v;
 
     renderOutput(v);
+    let handler = elBox.querySelector('.drag-handler');
+    draggable(elBox, handler);
   };
 
-  doc.ready(initSample);
+  initSample();
 })();
