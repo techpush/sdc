@@ -43,59 +43,35 @@
     <link rel="mask-icon" href="{{imgBrand}}/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="{{imgBrand}}/favicon.ico">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
     <link rel="stylesheet" type="text/css" href="css/fontello.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
 
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header>
+      <h1>{{meta.title}}</h1>
+      <a href="https://github.com/techpush/sdc" target="_blank" title="Go to GitHub repo">
+        <i class="icon-github-circled"></i>
+      </a>
+    </header>
 
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">{{meta.title}}</span>
-          <div class="mdl-layout-spacer"></div>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="https://github.com/techpush/sdc" target="_blank" title="Go to GitHub repo">
-              <i class="icon-github-circled"></i>
-            </a>
-          </nav>
-        </div>
-      </header>
+    <main>
+      <div id="elOutput"></div>
+    </main>
 
-      <main class="mdl-layout__content">
-        <div class="page-content">
-
-          <div id="elBox">
-            <div class="drag-handler">Scripting</div>
-            <div class="inner">
-              <textarea class="txt-input" id="elInput"></textarea>
-            </div>
-          </div>
-
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
-              <div class="txt-output">
-                <div id="elOutput"></div>
-              </div>
-            </div>
-          </div>
-
-          <span id="btnDownload" class="link-download">Export as SVG</span>
-        </div>
-      </main>
-
-      <footer>@ndaidong</footer>
-
+    <div id="elBox">
+      <div class="drag-handler">Scripting</div>
+      <div class="inner">
+        <textarea class="txt-input" id="elInput"></textarea>
+      </div>
     </div>
+    <span id="btnDownload" class="link-download">Export as SVG</span>
 
-    <script type="text/javascript" src="js/vendor/material.js"></script>
     <script type="text/javascript" src="js/vendor/raphael.js"></script>
     <script type="text/javascript" src="js/vendor/underscore.js"></script>
-    <script type="text/javascript" src="js/vendor/sequence-diagram-min.js"></script>
-    <script type="text/javascript" src="js/vendor/svgpan.js"></script>
+    <script type="text/javascript" src="js/vendor/sedia.js"></script>
     <script type="text/javascript" src="js/vendor/filesaver.js"></script>
+    <script type="text/javascript" src="js/vendor/svgpan.js"></script>
     <script type="text/javascript" src="js/vendor/draggable.js"></script>
     <script type="text/javascript" src="js/vendor/bella.js"></script>
     <script type="text/javascript" src="js/vendor/doc.js"></script>

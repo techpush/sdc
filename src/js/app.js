@@ -44,6 +44,25 @@
     };
   };
 
+  var getWindowSize = () => {
+    let width = 0;
+    let height = 0;
+    if (window.innerWidth) {
+      width = window.innerWidth;
+      height = window.innerHeight;
+    } else if (document.documentElement && document.documentElement.clientWidth) {
+      width = document.documentElement.clientWidth;
+      height = document.documentElement.clientHeight;
+    } else if (document.body) {
+      width = document.body.clientWidth;
+      height = document.body.clientHeight;
+    }
+    return {
+      width,
+      height
+    };
+  };
+
   var addColon = (s) => {
     if (s.includes(':')) {
       return s;
@@ -65,19 +84,17 @@
     return x;
   };
 
-  var updateDownloadLink = () => {
-    let svg = elOutput.querySelector('svg');
-    let w = parseInt(svg.width.baseVal, 10);
-    let h = parseInt(svg.height.baseVal, 10);
+  var updateDownloadLink = (svg) => {
+
     let xml = [
       `<?xml version="1.0" encoding="utf-8" standalone="no"?>`,
       `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">`,
-      `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" xmlns:xlink="http://www.w3.org/1999/xlink">`,
+      `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`,
       svg.innerHTML,
       `</svg>`
     ].join('');
 
-    let title = 'Sequence Diagram';
+    let title = 'Untitled Sequence Diagram';
 
     let a = lastData.split('\n');
     let m = a[0];
@@ -101,8 +118,24 @@
     };
   };
 
+  var updatePosition = (svg) => {
+    let w = parseInt(svg.getAttribute('width'), 10);
+    let h = parseInt(svg.getAttribute('height'), 10);
+
+    let ws = getWindowSize();
+    let ww = ws.width;
+    let wh = ws.height - 70;
+    let sw = Math.max(ww, w);
+    let sh = Math.max(wh, h);
+    svg.setAttribute('width', sw);
+    svg.setAttribute('height', sh);
+  };
+
   var updateDragger = () => {
-    svgPanZoom('#elOutput svg', {
+
+    let svg = elOutput.querySelector('svg');
+
+    svgPanZoom(svg, {
       viewportSelector: '#elOutput',
       zoomEnabled: true,
       controlIconsEnabled: false,
@@ -112,7 +145,8 @@
       center: true
     });
 
-    setTimeout(updateDownloadLink, 100);
+    updatePosition(svg);
+    updateDownloadLink(svg);
   };
 
   var renderOutput = (v) => {
@@ -120,8 +154,8 @@
       let diagram = Diagram.parse(v);
       elOutput.empty();
       diagram.drawSVG(elOutput);
-      updateDragger();
       lastData = v;
+      updateDragger();
       return diagram;
     } catch (e) {
       return e;
